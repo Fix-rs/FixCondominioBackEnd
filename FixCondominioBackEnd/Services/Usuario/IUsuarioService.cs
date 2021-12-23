@@ -23,7 +23,7 @@ namespace FixCondominioBackEnd.Services.Usuario
 
         public InputUsuarioModel ValidaDados(InputUsuarioModel user)
         {
-            if (user != null && !string.IsNullOrEmpty(user.Email) && !string.IsNullOrEmpty(user.Senha) && !string.IsNullOrEmpty(user.Name))
+            if (user != null && !string.IsNullOrEmpty(user.Email) && !string.IsNullOrEmpty(user.Senha) && !string.IsNullOrEmpty(user.Nome))
             {
                 return user;
             }
@@ -65,7 +65,7 @@ namespace FixCondominioBackEnd.Services.Usuario
             {
                 var ret = await _userRepository.InsertAsync(new UsuarioModel
                 {
-                    Nome = user.Name,
+                    Nome = user.Nome,
                     Email = user.Email,
                     Senha = user.Senha,
                 });

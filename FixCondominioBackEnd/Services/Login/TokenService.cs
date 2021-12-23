@@ -32,8 +32,8 @@ namespace FixCondominioBackEnd.Services
             return new ViewUsuarioModel()
             {
                 ID = user.ID,
-                Name = user.Nome,
-                Regra = user.Regra,
+                Nome = user.Nome,
+                Role = user.Regra,
                 Token = tokenHandler.WriteToken(token)
             };
 
