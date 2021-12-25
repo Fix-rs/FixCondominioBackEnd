@@ -20,7 +20,7 @@ namespace FixCondominioBackEnd.Services
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, user.ID.ToString()),
-                    new Claim(ClaimTypes.Role, user.Regra)
+                    new Claim(ClaimTypes.Role, user.Regra.ToString())
 
                 }),
                 Expires = expires,

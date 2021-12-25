@@ -9,7 +9,7 @@ namespace FixCondominioBackEnd.Models
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
-        public string Regra { get; set; } = "user";
+        public Enum.EnumRole Regra { get; set; } = Enum.EnumRole.User;
         public DateTime DataAlteracao { get; set; }
     }
 }

@@ -47,9 +47,8 @@ namespace FixCondominioBackEnd.Migrations
                         .HasColumnType("text")
                         .HasColumnName("usu_nome");
 
-                    b.Property<string>("Regra")
-                        .IsRequired()
-                        .HasColumnType("text")
+                    b.Property<int>("Regra")
+                        .HasColumnType("integer")
                         .HasColumnName("usu_regra");
 
                     b.Property<string>("Senha")

@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FixCondominioBackEnd.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20211212115514_inicial")]
+    [Migration("20211225102035_inicial")]
     partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,9 +49,8 @@ namespace FixCondominioBackEnd.Migrations
                         .HasColumnType("text")
                         .HasColumnName("usu_nome");
 
-                    b.Property<string>("Regra")
-                        .IsRequired()
-                        .HasColumnType("text")
+                    b.Property<int>("Regra")
+                        .HasColumnType("integer")
                         .HasColumnName("usu_regra");
 
                     b.Property<string>("Senha")

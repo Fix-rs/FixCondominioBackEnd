@@ -23,7 +23,7 @@ namespace FixCondominioBackEnd.Migrations
                     usu_nome = table.Column<string>(type: "text", nullable: false),
                     usu_email = table.Column<string>(type: "text", nullable: false),
                     usu_senha = table.Column<string>(type: "text", nullable: false),
-                    usu_regra = table.Column<string>(type: "text", nullable: false),
+                    usu_regra = table.Column<int>(type: "integer", nullable: false),
                     usu_dataalteracao = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "now()")
                 },
                 constraints: table =>
