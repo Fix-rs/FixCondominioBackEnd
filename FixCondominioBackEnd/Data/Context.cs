@@ -24,8 +24,10 @@ public class Context : DbContext
             modelBuilder.Entity(entity.Name).ToTable(currentTableName.ToLower());
         }
 
-        UsuarioTable.TableBuildBranch(modelBuilder);
+        UsuariosTable.TableBuildBranch(modelBuilder);
+        LancamentosTable.TableBuildBranch(modelBuilder);
     }
 
     public DbSet<FixCondominioBackEnd.Models.UsuarioModel> Usuario { get; set; }
-    }
+    public DbSet<FixCondominioBackEnd.Models.LancamentosModel> Lancamentos { get; set; }
+}

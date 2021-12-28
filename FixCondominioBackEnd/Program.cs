@@ -1,4 +1,5 @@
 using FixCondominioBackEnd.Repositories;
+using FixCondominioBackEnd.Services.Lancamentos;
 using FixCondominioBackEnd.Services.Login;
 using FixCondominioBackEnd.Services.Usuario;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -16,6 +17,8 @@ builder.Services.AddDbContext<Context>(options =>
 builder.Services.AddScoped<IContaUsuarioService, ContaUsuarioService>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<ILancamentosServices, LancamentosServices>();
+builder.Services.AddScoped<ILancamentoRepository, LancamentoRepository>();
 
 
 

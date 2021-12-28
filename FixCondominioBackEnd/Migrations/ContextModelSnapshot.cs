@@ -22,6 +22,40 @@ namespace FixCondominioBackEnd.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("FixCondominioBackEnd.Models.LancamentosModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("lan_id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("DataAlteracao")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("lan_dataalteracao")
+                        .HasDefaultValueSql("now()");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("lan_descricao");
+
+                    b.Property<int>("Lancamento")
+                        .HasColumnType("integer")
+                        .HasColumnName("lan_tipo");
+
+                    b.Property<decimal>("Valor")
+                        .HasColumnType("numeric")
+                        .HasColumnName("lan_valor");
+
+                    b.HasKey("ID")
+                        .HasName("pk_lancamentos");
+
+                    b.ToTable("lancamentos", "public");
+                });
+
             modelBuilder.Entity("FixCondominioBackEnd.Models.UsuarioModel", b =>
                 {
                     b.Property<int>("ID")
@@ -57,9 +91,9 @@ namespace FixCondominioBackEnd.Migrations
                         .HasColumnName("usu_senha");
 
                     b.HasKey("ID")
-                        .HasName("pk_usuario");
+                        .HasName("pk_usuarios");
 
-                    b.ToTable("usuario", "public");
+                    b.ToTable("usuarios", "public");
                 });
 #pragma warning restore 612, 618
         }

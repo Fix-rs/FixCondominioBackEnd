@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FixCondominioBackEnd.Data.Tabelas
 {
-    public class UsuarioTable
+    public class UsuariosTable
     {
         public static void TableBuildBranch(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UsuarioModel>(entity =>
             {
-                entity.ToTable("usuario");
+                entity.ToTable("usuarios");
                 entity.Property(e => e.ID).HasColumnName("usu_id").ValueGeneratedOnAdd();
                 entity.HasKey(e => e.ID);
 

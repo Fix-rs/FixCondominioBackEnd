@@ -39,7 +39,7 @@ namespace FixCondominioBackEnd.Repositories
         }
         public async Task<UsuarioModel> GetByUserAndPasswordAsync(InputLoginModel user)
         {
-            return await _context.Usuario.Where(w => w.Email == user.Email && w.Senha == user.Senha).FirstOrDefaultAsync();
+            return await _context.Usuario.Where(w => w.Email == user.Email.ToLower() && w.Senha == user.Senha).FirstOrDefaultAsync();
         }
 
         public async Task<UsuarioModel> InsertAsync(UsuarioModel user)
