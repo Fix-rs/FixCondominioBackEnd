@@ -1,4 +1,5 @@
 ﻿using FixCondominioBackEnd.Models;
+using FixCondominioBackEnd.Models.InputModels;
 using FixCondominioBackEnd.Models.ViewModels;
 using FixCondominioBackEnd.Services.Lancamentos;
 using Microsoft.AspNetCore.Authorization;
@@ -17,12 +18,22 @@ namespace FixCondominioBackEnd.Controllers
             _lancamentoService = lancamentosServices;
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("buscartodos")]
         [AllowAnonymous]
-        public async Task<List<LancamentosModel>> GetAll()
+        public async Task<IEnumerable<ViewLancamentosModel>> GetAll() =>
+             await _lancamentoService.GetAll();
+
+        [HttpPost]
+        [Route("criar")]
+        [AllowAnonymous]
+        public async Task<ViewLancamentosModel> Create(InputLancamentoModel inputLancamentoModel)
         {
-            var ret = await _lancamentoService.GetAll();
+            if (!ModelState.IsValid)
+            {
+                return null;
+            }
+            var ret = await _lancamentoService.Create(inputLancamentoModel);
 
             return ret;
         }

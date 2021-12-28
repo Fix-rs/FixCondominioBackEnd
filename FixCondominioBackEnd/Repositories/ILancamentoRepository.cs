@@ -8,7 +8,7 @@ namespace FixCondominioBackEnd.Repositories
 
     public interface ILancamentoRepository : IDisposable
     {
-        Task<List<LancamentosModel>> GetAllAsync();
+        Task<IEnumerable<LancamentosModel>> GetAllAsync();
         Task<LancamentosModel> GetByIdAsync(int id);
         Task<LancamentosModel> InsertAsync(LancamentosModel user);
         Task<int> SaveAsync();
@@ -22,7 +22,7 @@ namespace FixCondominioBackEnd.Repositories
             _context = context;
         }
 
-        public async Task<List<LancamentosModel>> GetAllAsync()
+        public async Task<IEnumerable<LancamentosModel>> GetAllAsync()
         {
             return await _context.Lancamentos.ToListAsync();
         }
@@ -35,6 +35,7 @@ namespace FixCondominioBackEnd.Repositories
         public async Task<LancamentosModel> InsertAsync(LancamentosModel lancamentoModel)
         {
             await _context.Lancamentos.AddAsync(lancamentoModel);
+            await _context.SaveChangesAsync();
             return lancamentoModel;
         }
 

@@ -7,7 +7,7 @@ namespace FixCondominioBackEnd.Services.Lancamentos
 {
     public interface ILancamentosServices
     {
-        Task<List<LancamentosModel>> GetAll();
+        Task<IEnumerable<ViewLancamentosModel>> GetAll();
         Task<ViewLancamentosModel> GetById(int id);
         Task<ViewLancamentosModel> Create(InputLancamentoModel lancamentoModel);
         Task<ViewLancamentosModel> Update(InputLancamentoModel lancamentoModel);
@@ -20,9 +20,15 @@ namespace FixCondominioBackEnd.Services.Lancamentos
         {
             _lancamentosRepository = lancamentoRepository;
         }
-        public Task<ViewLancamentosModel> Create(InputLancamentoModel lancamentoModel)
+        public async Task<ViewLancamentosModel> Create(InputLancamentoModel inputlancamentoModel)
         {
-            throw new NotImplementedException();
+            var lancamentoModel = new LancamentosModel()
+            {
+                Descricao = inputlancamentoModel.Descricao,
+                Valor = inputlancamentoModel.Valor,
+                Lancamento = inputlancamentoModel.Lancamento
+            };
+            return await _lancamentosRepository.InsertAsync(lancamentoModel);
         }
 
         public Task<ViewLancamentosModel> Delete(InputLancamentoModel lancamentoModel)
@@ -30,9 +36,11 @@ namespace FixCondominioBackEnd.Services.Lancamentos
             throw new NotImplementedException();
         }
 
-        public async Task<List<LancamentosModel>> GetAll()
+        public async Task<IEnumerable<ViewLancamentosModel>> GetAll()
         {
-            return await _lancamentosRepository.GetAllAsync();
+            var ret = await _lancamentosRepository.GetAllAsync();
+
+            return ret.Select(r => (ViewLancamentosModel)r).ToList();
         }
 
         public Task<ViewLancamentosModel> GetById(int id)
